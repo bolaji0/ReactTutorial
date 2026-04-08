@@ -1,6 +1,6 @@
 import LineItem from './LineItem'
 
-const ItemList = ({items, handleCheck, handleDelete }) => {
+const ItemList = ({items, handleCheck, handleDelete, }) => {
   return (
     <ul>
         {

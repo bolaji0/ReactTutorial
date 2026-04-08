@@ -3,12 +3,12 @@ import SearchItem from './searchItem';
 import AddItem from './AddItem';
 import Content from './Content'
 import Footer from './Footer'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
 
 
-    const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')));
+    const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')) || []);
     const [newItem, setNewItem] = useState('')
     const [search, setSearch] = useState('')
 
@@ -29,7 +29,7 @@ function App() {
         {...item, checked: !item.checked} : item);
         setAndSaveItems(listItems)
     }
-
+    
     const handleDelete = (id)=> {
         const listItems = items.filter((item) => item.id !== id);
         setAndSaveItems(listItems)
@@ -41,6 +41,10 @@ function App() {
         addItem(newItem)
         setNewItem('')
     }
+
+    useEffect(() => {
+      localStorage.setItem('shoppinglist', JSON.stringify(items))
+    }, [items])
 
   return (
     <div className="App">
