@@ -3,14 +3,17 @@ import SearchItem from './searchItem';
 import AddItem from './AddItem';
 import Content from './Content'
 import Footer from './Footer'
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 
 function App() {
+  const API_URL = "http://localhost:3500/items"
 
 
     const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')) || []);
     const [newItem, setNewItem] = useState('')
     const [search, setSearch] = useState('')
+    const [fetchError, setFetchError] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
     const setAndSaveItems = (newItems) => {
         setItems(newItems);
@@ -43,8 +46,29 @@ function App() {
     }
 
     useEffect(() => {
-      localStorage.setItem('shoppinglist', JSON.stringify(items))
-    }, [items])
+      const fetchItems = async () => {
+        try {
+          const response = await fetch(API_URL);
+          if(!response.ok) throw Error("Did not receive expected data");
+          console.log(response);
+          
+          const listItems = await response.json();
+          console.log(listItems);
+          setItems(listItems);
+          setFetchError(null)
+        } catch (err) {
+          // console.log(err.message);
+          setFetchError(err.message)
+        } finally{
+          setIsLoading(false)
+        }
+      }
+      setTimeout(() => {
+       fetchItems();
+     }, 2000);
+    }, [])
+
+    
 
   return (
     <div className="App">
@@ -58,11 +82,15 @@ function App() {
         search={search}
         setSearch={setSearch}
       />
-      <Content
-       items={items.filter(item => item.item.toLowerCase().includes(search.toLowerCase()))}
-       handleCheck={handleCheck}
-       handleDelete={handleDelete}
-      />
+      <main>
+        {isLoading && <p>Loading Items....</p> }
+        {fetchError && <p style={{}}>{`Error: ${fetchError}`}</p> }
+        {!fetchError && <Content
+        items={items.filter(item => item.item.toLowerCase().includes(search.toLowerCase()))}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}
+        />}
+      </main>
       <Footer />
     </div>
   )
