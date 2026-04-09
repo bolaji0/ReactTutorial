@@ -1,34 +1,19 @@
 {
   "items": [
     {
-      "id": "2",
-      "checked": true,
-      "item": "Pizza"
-    },
-    {
-      "id": "3",
-      "checked": true,
-      "item": "Bread"
-    },
-    {
-      "id": "IxUcuSwnmVk",
-      "checked": false,
-      "item": "ddd"
-    },
-    {
       "id": "7ZSfGnLPR_s",
-      "checked": true,
+      "checked": false,
       "item": "chicken falafel"
     },
     {
       "id": "bVOva1f0Sh4",
-      "checked": true,
+      "checked": false,
       "item": "Rabbit soup"
     },
     {
-      "id": "qWwMrR6YqHU",
-      "checked": true,
-      "item": "Turkey drum"
+      "id": "ByDI8RyDij8",
+      "checked": false,
+      "item": "Italian sphagetti"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

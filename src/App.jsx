@@ -7,7 +7,7 @@ import { use, useEffect, useState } from 'react';
 import apiRequest from './apiRequest';
 
 function App() {
-  const API_URL = "http://localhost:4500/items";
+  const API_URL = "http://localhost:3500/items";
     const [items, setItems] = useState([]);
     const [newItem, setNewItem] = useState('')
     const [search, setSearch] = useState('')
@@ -84,7 +84,7 @@ function App() {
         e.preventDefault();
         if(!newItem) return;
         addItem(newItem)
-        setItems('')
+        setNewItem('')
     }
 
 
