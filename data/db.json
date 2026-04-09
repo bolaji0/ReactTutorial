@@ -1,19 +1,35 @@
 {
-    "items": [
-        {
-            "id":1,
-            "checked": false,
-            "item": "Almonds, Unsalted, in the blue bag"
-        },
-        {
-            "id": 2,
-            "checked": false,
-            "item": "Pizza"
-        },
-        {
-            "id":3,
-            "checked": false,
-            "item": "Bread"
-        }
-    ]
+  "items": [
+    {
+      "id": "2",
+      "checked": true,
+      "item": "Pizza"
+    },
+    {
+      "id": "3",
+      "checked": true,
+      "item": "Bread"
+    },
+    {
+      "id": "IxUcuSwnmVk",
+      "checked": false,
+      "item": "ddd"
+    },
+    {
+      "id": "7ZSfGnLPR_s",
+      "checked": true,
+      "item": "chicken falafel"
+    },
+    {
+      "id": "bVOva1f0Sh4",
+      "checked": true,
+      "item": "Rabbit soup"
+    },
+    {
+      "id": "qWwMrR6YqHU",
+      "checked": true,
+      "item": "Turkey drum"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
